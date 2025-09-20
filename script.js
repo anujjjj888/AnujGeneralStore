@@ -13,7 +13,7 @@ function init() {
         const tr = document.createElement("tr");
         tr.classList.add("hover:bg-gray-100", "transition");
         tr.innerHTML = `
-          <td class="py-3 px-4">${row.Item || ""}</td>
+          <td class="py-3 px-4">${row.Item Name || ""}</td>
           <td class="py-3 px-4 text-green-600 font-semibold">₹${row.Rate || ""}</td>
           <td class="py-3 px-4">₹${row.MRP || ""}</td>
           <td class="py-3 px-4">${row.Stock || ""}</td>
