@@ -1,0 +1,2 @@
+# AnujGeneralStore
+Rate List
