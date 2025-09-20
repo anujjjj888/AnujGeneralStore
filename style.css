@@ -1,0 +1,8 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+tr:hover {
+  background-color: #eef2ff;
+  transition: 0.2s ease-in-out;
+}
