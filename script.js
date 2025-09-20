@@ -2,7 +2,7 @@ const sheetId = "1aY1kyz4i8nWVwGoCfKDd_0DjWSzxnhH0nubCLc0tI74";
 const sheetName = "AnujGeneral";
 const apiKey = ""; // अगर public access है तो खाली छोड़ सकते हो
 
-let url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}`;
+let url = `https://opensheet.elk.sh/${sheetId}/${sheetName}`;
 if (apiKey) url += `?key=${apiKey}`;
 
 async function fetchSheetData() {
