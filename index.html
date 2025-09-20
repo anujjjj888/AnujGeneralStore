@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Live Product Rates</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Product Rates</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-100 text-gray-900">
 
@@ -34,34 +35,6 @@
 
   <!-- Tabletop.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.6.0/tabletop.min.js"></script>
-
-  <script>
-    const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1aY1kyz4i8nWVwGoCfKDd_0DjWSzxnhH0nubCLc0tI74/edit?usp=sharing';
-
-    function init() {
-      Tabletop.init({
-        key: publicSpreadsheetUrl,
-        simpleSheet: true,
-        wanted: ["AnujGeneral"], // Sheet tab name
-        callback: function(data, tabletop) {
-          const tbody = document.getElementById("data-table");
-          tbody.innerHTML = "";
-          data.forEach(row => {
-            const tr = document.createElement("tr");
-            tr.classList.add("hover:bg-gray-100", "transition");
-            tr.innerHTML = `
-              <td class="py-3 px-4">${row.Item || ""}</td>
-              <td class="py-3 px-4 text-green-600 font-semibold">₹${row.Rate || ""}</td>
-              <td class="py-3 px-4">₹${row.MRP || ""}</td>
-              <td class="py-3 px-4">${row.Stock || ""}</td>
-            `;
-            tbody.appendChild(tr);
-          });
-        }
-      });
-    }
-
-    window.addEventListener('DOMContentLoaded', init);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
