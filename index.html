@@ -4,87 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anuj General Store - Live Rate List</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #222;
-      margin-bottom: 20px;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 12px;
-      border: 1px solid #ddd;
-      text-align: center;
-    }
-    th {
-      background: #222;
-      color: #fff;
-      font-weight: bold;
-    }
-    tr:nth-child(even) {
-      background: #f2f2f2;
-    }
-    #sheetData {
-      margin-top: 20px;
-    }
-    .error {
-      text-align: center;
-      color: red;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <h1>🛒 Anuj General Store - Live Rate List</h1>
+  </header>
 
-  <h1>🛒 Anuj General Store - Live Rate List</h1>
-  <div id="sheetData">Loading data...</div>
+  <main>
+    <div id="sheetData">Loading data...</div>
+  </main>
 
-  <script>
-    const sheetId = "1aY1kyz4i8nWVwGoCfKDd_0DjWSzxnhH0nubCLc0tI74";
-    const apiKey = "AIzaSyDcP-0wG8PPVoZOdsb9TKN0gSKZyjnSjik";
-    const range = "Sheet1!A1:Z100"; // ✅ सही tab name
+  <footer>
+    © 2025 AnujGeneralStore
+  </footer>
 
-    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.values) {
-          let table = "<table>";
-          data.values.forEach((row, i) => {
-            table += "<tr>";
-            row.forEach(cell => {
-              table += i === 0 
-                ? `<th>${cell}</th>` 
-                : `<td>${cell}</td>`;
-            });
-            table += "</tr>";
-          });
-          table += "</table>";
-          document.getElementById("sheetData").innerHTML = table;
-        } else {
-          document.getElementById("sheetData").innerHTML = "<div class='error'>⚠️ No data found in sheet!</div>";
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        document.getElementById("sheetData").innerHTML = "<div class='error'>❌ Error loading sheet data!</div>";
-      });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
