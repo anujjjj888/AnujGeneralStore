@@ -1,27 +1,45 @@
-const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1aY1kyz4i8nWVwGoCfKDd_0DjWSzxnhH0nubCLc0tI74/edit?usp=sharing';
-const sheetTabName = "AnujGeneral"; // Sheet tab name
+const sheetUrl = "https://opensheet.elk.sh/1aY1kyz4i8nWVwGoCfKDd_0DjWSzxnhH0nubCLc0tI74/Sheet1";
 
-function init() {
-  Tabletop.init({
-    key: publicSpreadsheetUrl,
-    simpleSheet: true,
-    wanted: [sheetTabName],
-    callback: function(data, tabletop) {
-      const tbody = document.getElementById("data-table");
-      tbody.innerHTML = "";
-      data.forEach(row => {
-        const tr = document.createElement("tr");
-        tr.classList.add("hover:bg-gray-100", "transition");
-        tr.innerHTML = `
-          <td class="py-3 px-4">${row.Item Name || ""}</td>
-          <td class="py-3 px-4 text-green-600 font-semibold">₹${row.Rate || ""}</td>
-          <td class="py-3 px-4">₹${row.MRP || ""}</td>
-          <td class="py-3 px-4">${row.Stock || ""}</td>
-        `;
-        tbody.appendChild(tr);
-      });
+async function fetchData() {
+  try {
+    const res = await fetch(sheetUrl);
+    const data = await res.json();
+
+    const container = document.getElementById("sheetData");
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+      container.innerHTML = "⚠️ No data found!";
+      return;
     }
-  });
+
+    let table = "<table>";
+    // Table headers
+    table += "<tr>";
+    Object.keys(data[0]).forEach(key => {
+      table += `<th>${key}</th>`;
+    });
+    table += "</tr>";
+
+    // Table rows
+    data.forEach(row => {
+      table += "<tr>";
+      Object.values(row).forEach(value => {
+        table += `<td>${value}</td>`;
+      });
+      table += "</tr>";
+    });
+
+    table += "</table>";
+    container.innerHTML = table;
+
+  } catch (err) {
+    console.error("Fetch error:", err);
+    document.getElementById("sheetData").innerHTML = "❌ Error loading sheet data!";
+  }
 }
 
-window.addEventListener('DOMContentLoaded', init);
+// Initial fetch
+fetchData();
+// Auto refresh every 60 seconds
+setInterval(fetchData, 60000);
