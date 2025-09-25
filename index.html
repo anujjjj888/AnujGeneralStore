@@ -3,38 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Product Rates</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Anuj General Store - Live Rate List</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 text-gray-900">
-
-  <header class="bg-gradient-to-r from-indigo-600 to-blue-400 text-white py-6 text-center">
-    <h1 class="text-3xl font-bold">📦 Live Product Rate List</h1>
+<body>
+  <header>
+    <h1>🛒 Anuj General Store - Live Rate List</h1>
   </header>
 
-  <main class="container mx-auto py-10">
-    <div class="overflow-x-auto shadow-lg rounded-lg">
-      <table class="min-w-full bg-white rounded-lg">
-        <thead>
-          <tr class="bg-indigo-600 text-white text-left">
-            <th class="py-3 px-4">Item Name</th>
-            <th class="py-3 px-4">Rate</th>
-            <th class="py-3 px-4">MRP</th>
-            <th class="py-3 px-4">Stock</th>
-          </tr>
-        </thead>
-        <tbody id="data-table" class="divide-y divide-gray-200"></tbody>
-      </table>
-    </div>
+  <main>
+    <div id="sheetData">Loading...</div>
   </main>
 
-  <footer class="text-center py-6 text-gray-600">
-    © 2025 AnujGeneral | Powered by Google Sheets
+  <footer>
+    © 2025 AnujGeneralStore
   </footer>
 
-  <!-- Tabletop.js Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.6.0/tabletop.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
