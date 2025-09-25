@@ -14,14 +14,14 @@ async function fetchData() {
     }
 
     let table = "<table>";
-    // table headers
+    // Table headers
     table += "<tr>";
     Object.keys(data[0]).forEach(key => {
       table += `<th>${key}</th>`;
     });
     table += "</tr>";
 
-    // table rows
+    // Table rows
     data.forEach(row => {
       table += "<tr>";
       Object.values(row).forEach(value => {
@@ -39,7 +39,7 @@ async function fetchData() {
   }
 }
 
-// initial load
+// Initial fetch
 fetchData();
-// auto refresh every 1 minute
+// Auto refresh every 60 seconds
 setInterval(fetchData, 60000);
