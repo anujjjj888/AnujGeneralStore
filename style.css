@@ -1,6 +1,6 @@
 /* General */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: #f4f7fb;
   margin: 0;
   padding: 0;
@@ -18,30 +18,36 @@ header h1 {
   margin: 0;
   font-size: 2rem;
 }
-header p {
-  margin: 5px 0 0;
-}
+header p { margin: 5px 0 0; }
 
 /* Filter Box */
 .filter-box {
   text-align: center;
-  margin: 20px 0;
+  margin: 20px;
 }
 
-#searchBox {
-  width: 80%;
-  max-width: 400px;
-  padding: 10px 15px;
-  border-radius: 20px;
+.filter-box input,
+.filter-box select,
+.filter-box button {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 1rem;
-  outline: none;
+  font-size: 0.9rem;
 }
+
+.filter-box button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.filter-box button:hover { background: #388E3C; }
 
 /* Table */
 table {
   border-collapse: collapse;
-  width: 90%;
+  width: 95%;
   margin: auto;
   background: #fff;
   border-radius: 10px;
@@ -60,9 +66,7 @@ th {
   color: white;
 }
 
-tr:hover {
-  background: #f1f1f1;
-}
+tr:hover { background: #f1f1f1; }
 
 /* Footer */
 footer {
@@ -89,7 +93,6 @@ footer {
   text-decoration: none;
   transition: transform 0.2s;
 }
-
 .whatsapp-float:hover {
   transform: scale(1.1);
   background: #20b954;
