@@ -13,9 +13,18 @@
   </header>
 
   <main>
-    <!-- Search Filter -->
+    <!-- Filter Section -->
     <div class="filter-box">
-      <input type="text" id="searchBox" placeholder="🔍 Search by product name...">
+      <input type="text" id="searchBox" placeholder="🔍 Search product name...">
+      <input type="number" id="minRate" placeholder="Min Rate">
+      <input type="number" id="maxRate" placeholder="Max Rate">
+      <select id="stockFilter">
+        <option value="">All Stock</option>
+        <option value="in">In Stock</option>
+        <option value="out">Out of Stock</option>
+      </select>
+      <button id="applyFilter">Apply Filter</button>
+      <button id="resetFilter">Reset</button>
     </div>
 
     <!-- Data Display -->
@@ -23,13 +32,11 @@
   </main>
 
   <footer>
-    © 2025 Anuj General Store
+    © 2025 Anuj General Store Basti Uttar Pardesh India 
   </footer>
 
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/919580091250" target="_blank" class="whatsapp-float">
-    💬
-  </a>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919580091250" target="_blank" class="whatsapp-float">💬</a>
 
   <script src="script.js"></script>
 </body>
