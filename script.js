@@ -1,35 +1,45 @@
-const sheetId = "1aY1kyz4i8nWVwGoCfKDd_0DjWSzxnhH0nubCLc0tI74";
-const sheetName = "AnujGeneral"; // tab name
-const url = `https://opensheet.elk.sh/${sheetId}/${sheetName}`;
+const sheetUrl = "https://opensheet.elk.sh/1aY1kyz4i8nWVwGoCfKDd_0DjWSzxnhH0nubCLc0tI74/Sheet1";
 
-async function fetchSheetData() {
+async function fetchData() {
   try {
-    const res = await fetch(url);
+    const res = await fetch(sheetUrl);
     const data = await res.json();
-    const rows = data;
-    const tbody = document.getElementById("data-table");
 
-    if (!rows || rows.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4">No data found</td></tr>`;
+    const container = document.getElementById("sheetData");
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+      container.innerHTML = "⚠️ No data found!";
       return;
     }
 
-    const htmlRows = rows.map(row => `
-      <tr class="hover:bg-gray-100 transition">
-        <td class="py-3 px-4">${row.Item || ""}</td>
-        <td class="py-3 px-4 text-green-600 font-semibold">₹${row.Rate || ""}</td>
-        <td class="py-3 px-4">₹${row.MRP || ""}</td>
-        <td class="py-3 px-4">${row.Stock || ""}</td>
-      </tr>
-    `).join("");
+    let table = "<table>";
+    // table headers
+    table += "<tr>";
+    Object.keys(data[0]).forEach(key => {
+      table += `<th>${key}</th>`;
+    });
+    table += "</tr>";
 
-    tbody.innerHTML = htmlRows;
+    // table rows
+    data.forEach(row => {
+      table += "<tr>";
+      Object.values(row).forEach(value => {
+        table += `<td>${value}</td>`;
+      });
+      table += "</tr>";
+    });
+
+    table += "</table>";
+    container.innerHTML = table;
 
   } catch (err) {
-    console.error("Error fetching sheet data:", err);
-    document.getElementById("data-table").innerHTML = `<tr><td colspan="4" class="text-center py-4">⚠️ Failed to load data</td></tr>`;
+    console.error(err);
+    document.getElementById("sheetData").innerHTML = "❌ Error loading sheet data!";
   }
 }
 
-fetchSheetData();
-setInterval(fetchSheetData, 60000);
+// initial load
+fetchData();
+// auto refresh every 1 minute
+setInterval(fetchData, 60000);
